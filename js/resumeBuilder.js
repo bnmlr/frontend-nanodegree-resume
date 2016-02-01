@@ -17,14 +17,14 @@
 //var name = "Benjamin Miller";
 //var formattedName = HTMLheaderName.replace("%data%", name);
 
-//var role = "Learning Experience Designer"
-//var formattedRole = HTMLheaderRole.replace("%data%", role);
+/*var role = "Learning Experience Designer"
+var formattedRole = HTMLheaderRole.replace("%data%", role);
 
-//$("#header").prepend(formattedRole);
+$("#header").prepend(formattedRole);*/
 //$("#header").prepend(formattedName);
 
 //creating a object containing resume info
-var bio {
+var bio = {
 	"name": "Benjamin Miller",
 	"role": "Learning Experience Designer",
 	"contacts": {
@@ -41,7 +41,7 @@ var bio {
 	"bioPic": "images/headShot.jpg"
 };
 
-var education {
+var education = {
 	"schools": [
 		{
 			"name": "Utah State University",
@@ -76,7 +76,7 @@ var education {
 	]
 };
 
-var work {
+var work = {
 	"jobs": [
 		{
 			"employer": "Investools from TD Ameritrade",
@@ -95,7 +95,7 @@ var work {
 	]
 };
 
-var projects {
+var projects = {
 	"projects": [
 		{
 			"title": "Portfolio Management Course",
@@ -111,3 +111,15 @@ var projects {
 		}
 	]
 };
+
+var formattedName = HTMLheaderName.replace("%data%", bio.name);
+$("#header").prepend(formattedName);
+
+if (bio.skills.length > 0 ) {
+	$("#header").append(HTMLskillsStart);
+	bio.skills.forEach(function(item)
+		{	
+		var formattedSkill = HTMLskills.replace("%data%", item);
+		$("#skills").append(formattedSkill);
+	});
+	}
