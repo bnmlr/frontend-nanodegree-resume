@@ -128,9 +128,15 @@ var i = 0
 work.jobs.forEach(function(item)
 		{	
 		$("#workExperience").append(HTMLworkStart);
-		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[i].employer)
-		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[i].title)
+		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[i].employer);
+		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[i].title);
 		$(".work-entry:last").append(formattedEmployer+formattedTitle);
+		var formattedDates = HTMLworkDates.replace("%data%", work.jobs[i].dates);
+		$(".work-entry:last").append(formattedDates);
+		var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[i].location);
+		$(".work-entry:last").append(formattedLocation);
+		var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[i].description);
+		$(".work-entry:last").append(formattedDescription);
 		i++;
 		//var formattedJob = HTMLworkStart.replace("%data%", item);
 		//$("#skills").append(formattedSkill);
