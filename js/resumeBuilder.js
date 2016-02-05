@@ -1,27 +1,3 @@
-//$("#main").append("Benjamin Miller");
-//var awesomeThoughts = "I am Ben and I am Awesome!";
-
-//var funThoughts = awesomeThoughts.replace("Awesome", "FUN");
-
-//console.log(awesomeThoughts);
-//console.log(funThoughts);
-
-//$("#main").append(funThoughts);
-
-//var skills = ["writing", "design", "learning theory", "front-end web dev"]; 
-//creating an array
- //$("#main").append(skills);
- //appending array to page
-//$("#main").append(skills[0]);
-//appends first item from array
-//var name = "Benjamin Miller";
-//var formattedName = HTMLheaderName.replace("%data%", name);
-
-/*var role = "Learning Experience Designer"
-var formattedRole = HTMLheaderRole.replace("%data%", role);
-
-$("#header").prepend(formattedRole);*/
-//$("#header").prepend(formattedName);
 
 //creating a object containing resume info
 var bio = {
@@ -38,8 +14,20 @@ var bio = {
 	"skills": [
 		"instructional design", "content development", "front-end web development"
 	],
-	"bioPic": "images/headShot.jpg"
+	"bioPic": "images/headShot.jpg",
 };
+//ecapsulate functions in objects using dot notation to keep JSON valid
+bio.display = function() {
+		var formattedName = HTMLheaderName.replace("%data%", bio.name);
+		$("#header").prepend(formattedName);
+		$("#header").append(HTMLskillsStart);
+		bio.skills.forEach(function(item) {	//iterates through skills array and appends to page
+			var formattedSkill = HTMLskills.replace("%data%", item);
+			$("#skills").append(formattedSkill);
+			}
+			);
+	}
+bio.display();
 
 var education = {
 	"schools": [
@@ -75,6 +63,22 @@ var education = {
 		}
 	]
 };
+education.display = function() { 
+	var i = 0
+	education.schools.forEach(function(item) {	
+		$("#education").append(HTMLschoolStart);
+		var formattedName = HTMLschoolName.replace("%data%", education.schools[i].name);
+		var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree);
+		$(".education-entry:last").append(formattedName+formattedDegree);
+		var formattedDates = HTMLschoolDates.replace("%data%", education.schools[i].dates);
+		$(".education-entry:last").append(formattedDates);
+		var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[i].major[0]);
+		$(".education-entry:last").append(formattedMajor);
+		i++;
+	}
+	);
+}
+education.display();
 
 var work = {
 	"jobs": [
@@ -92,41 +96,11 @@ var work = {
      		"dates": "2012-2014",
      		"description": "Designed and developed learning solutions to solve performance gaps."
 		}
-	]
-};
-
-var projects = {
-	"projects": [
-		{
-			"title": "Portfolio Management Course",
-      		"dates": "2014-2015",
-      		"description": "An online course that teaches the basics of allocating and diversifying an investment portfolio",
-      		"images": ["images/pm.png"]
-		},
-		{
-			"title": "Competency-Based Learning Explainer Video",
-      		"dates": "2013",
-      		"description": "A video that explains competency-based learning",
-      		"images": ["images/cbe.png"]
-		}
-	]
-};
-
-var formattedName = HTMLheaderName.replace("%data%", bio.name);
-$("#header").prepend(formattedName);
-
-if (bio.skills.length > 0 ) {
-	$("#header").append(HTMLskillsStart);
-	bio.skills.forEach(function(item)
-		{	
-		var formattedSkill = HTMLskills.replace("%data%", item);
-		$("#skills").append(formattedSkill);
-	});
-	}
-
-var i = 0
-work.jobs.forEach(function(item)
-		{	
+	],
+}
+work.display = function() { 
+	var i = 0
+	work.jobs.forEach(function(item) {	
 		$("#workExperience").append(HTMLworkStart);
 		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[i].employer);
 		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[i].title);
@@ -138,6 +112,47 @@ work.jobs.forEach(function(item)
 		var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[i].description);
 		$(".work-entry:last").append(formattedDescription);
 		i++;
-		//var formattedJob = HTMLworkStart.replace("%data%", item);
-		//$("#skills").append(formattedSkill);
-	});
+	}
+	);
+}
+work.display();
+
+var projects = {
+	"projects": [
+		{
+			"title": "Portfolio Management Course",
+      		"dates": "2014-2015",
+      		"description": "An online course that teaches the basics of allocating and diversifying an investment portfolio",
+      		"images": ["images/pm.png", "images/quiz.png"]
+		},
+		{
+			"title": "Competency-Based Learning Explainer Video",
+      		"dates": "2013",
+      		"description": "A video that explains competency-based learning",
+      		"images": ["images/cbe.png", "images/cbeChart.png"]
+		}
+	]
+};
+projects.display = function() {
+	var i = 0;
+		projects.projects.forEach(function(item) {	
+			$("#projects").append(HTMLprojectStart);
+			var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
+			$(".project-entry:last").append(formattedTitle);
+			var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
+			$(".project-entry:last").append(formattedDates);
+			var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
+			$(".project-entry:last").append(formattedDescription);
+			var j = 0;
+			projects.projects[i].images.forEach(function(item) {
+				var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[j]);
+				$(".project-entry:last").append(formattedImage);
+				j++;
+			});
+			i++;
+		}
+		);
+}
+projects.display();
+
+$("#mapDiv").append(googleMap);
