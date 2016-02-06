@@ -18,15 +18,26 @@ var bio = {
 };
 //ecapsulate functions in objects using dot notation to keep JSON valid
 bio.display = function() {
-		var formattedName = HTMLheaderName.replace("%data%", bio.name);
-		$("#header").prepend(formattedName);
-		$("#header").append(HTMLskillsStart);
-		bio.skills.forEach(function(item) {	//iterates through skills array and appends to page
-			var formattedSkill = HTMLskills.replace("%data%", item);
-			$("#skills").append(formattedSkill);
-			}
-			);
+	var formattedRole = HTMLheaderRole.replace("%data%", bio.role)
+	$("#header").prepend(formattedRole);
+	var formattedName = HTMLheaderName.replace("%data%", bio.name);
+	$("#header").prepend(formattedName);
+	var formattedPic = HTMLbioPic.replace("%data%", bio.bioPic);
+	$("#header").append(formattedPic);
+	for (key in bio.contacts) {
+		if (bio.contacts.hasOwnProperty(key)) {
+    		var formattedContacts = HTMLcontactGeneric.replace("%contact%", key).replace("%data%", bio.contacts[key]);
+    		$("#topContacts").append(formattedContacts);
+    		$("#footerContacts").append(formattedContacts);
+		}
 	}
+	$("#header").append(HTMLskillsStart);
+	bio.skills.forEach(function(item) {	//iterates through skills array and appends to page
+		var formattedSkill = HTMLskills.replace("%data%", item);
+		$("#skills").append(formattedSkill);
+		}
+		);
+}
 bio.display();
 
 var education = {
