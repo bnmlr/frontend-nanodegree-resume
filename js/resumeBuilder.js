@@ -1,5 +1,5 @@
 
-//creating a object containing resume info
+//All resume info in JSON objects
 var bio = {
 	"name": "Benjamin Miller",
 	"role": "Learning Experience Designer",
@@ -16,9 +16,11 @@ var bio = {
 	],
 	"bioPic": "images/headShot.jpg",
 };
-//ecapsulate functions in objects using dot notation to keep JSON valid
+//ecapsulated functions in objects using dot notation to keep JSON valid.
+//functions iterate through objects, replace placeholders in helper.js, 
+//and append to DOM
 bio.display = function() {
-	var formattedRole = HTMLheaderRole.replace("%data%", bio.role)
+	var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 	$("#header").prepend(formattedRole);
 	var formattedName = HTMLheaderName.replace("%data%", bio.name);
 	$("#header").prepend(formattedName);
@@ -37,7 +39,7 @@ bio.display = function() {
 		$("#skills").append(formattedSkill);
 		}
 		);
-}
+};
 bio.display();
 
 var education = {
@@ -88,7 +90,7 @@ education.display = function() {
 		i++;
 	}
 	);
-}
+};
 education.display();
 
 var work = {
@@ -125,7 +127,7 @@ work.display = function() {
 		i++;
 	}
 	);
-}
+};
 work.display();
 
 var projects = {
@@ -163,7 +165,8 @@ projects.display = function() {
 			i++;
 		}
 		);
-}
+};
 projects.display();
 
+//google map feature
 $("#mapDiv").append(googleMap);
