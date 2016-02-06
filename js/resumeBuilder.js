@@ -33,8 +33,10 @@ bio.display = function() {
     		$("#footerContacts").append(formattedContacts);
 		}
 	}
-	$("#header").append(HTMLskillsStart);
-	bio.skills.forEach(function(item) {	//iterates through skills array and appends to page
+	$("#header").append(HTMLskillsStart); //
+	//I use forEach loops to iterates through arrays
+	//I took the idea of passing "item" from the forums, but I don't understand exactly how it works
+	bio.skills.forEach(function(item) {	
 		var formattedSkill = HTMLskills.replace("%data%", item);
 		$("#skills").append(formattedSkill);
 		}
