@@ -26,6 +26,8 @@ bio.display = function() {
 	$("#header").prepend(formattedName);
 	var formattedPic = HTMLbioPic.replace("%data%", bio.bioPic);
 	$("#header").append(formattedPic);
+	var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+	$("#header").append(formattedWelcome);
 	for (var key in bio.contacts) {
 		if (bio.contacts.hasOwnProperty(key)) {
     		var formattedContacts = HTMLcontactGeneric.replace("%contact%", key).replace("%data%", bio.contacts[key]);

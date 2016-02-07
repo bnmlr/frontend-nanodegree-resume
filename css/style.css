@@ -50,7 +50,6 @@ h2 {
 }
 
 h3 {
-    font-style: italic;
     font-size: 20px;
     color: #000;
     line-height: 22px;
@@ -98,11 +97,15 @@ a {
     display: block;
 }
 
+#topContacts {
+    margin-bottom: 20px;
+}
+
 .welcome-message {
-    font-style: italic;
     font-size: 18px;
     color: #f3f3f3;
     line-height: 28px;
+
 }
 
 #skills-h3 {
