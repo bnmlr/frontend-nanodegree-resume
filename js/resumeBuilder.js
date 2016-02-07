@@ -26,7 +26,7 @@ bio.display = function() {
 	$("#header").prepend(formattedName);
 	var formattedPic = HTMLbioPic.replace("%data%", bio.bioPic);
 	$("#header").append(formattedPic);
-	for (key in bio.contacts) {
+	for (var key in bio.contacts) {
 		if (bio.contacts.hasOwnProperty(key)) {
     		var formattedContacts = HTMLcontactGeneric.replace("%contact%", key).replace("%data%", bio.contacts[key]);
     		$("#topContacts").append(formattedContacts);
@@ -79,7 +79,7 @@ var education = {
 	]
 };
 education.display = function() { 
-	var i = 0
+	var i = 0;
 	education.schools.forEach(function(item) {	
 		$("#education").append(HTMLschoolStart);
 		var formattedName = HTMLschoolName.replace("%data%", education.schools[i].name);
@@ -112,9 +112,9 @@ var work = {
      		"description": "Designed and developed learning solutions to solve performance gaps."
 		}
 	],
-}
+};
 work.display = function() { 
-	var i = 0
+	var i = 0;
 	work.jobs.forEach(function(item) {	
 		$("#workExperience").append(HTMLworkStart);
 		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[i].employer);
